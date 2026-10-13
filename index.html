@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4EDE1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VLDMN Voorraad">
+<title>Studio VLDMN · Voorraad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4EDE1; --card:#FBF7F0; --sand:#E6D8C3; --line:#DCCBB3;
+  --walnut:#5A3E2B; --ink:#3B2A1E; --muted:#8C7662; --terra:#B5714A;
+  --ok:#6F7F4F; --warn:#C98A2B; --bad:#B4533C;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{font-family:'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);
+  padding-top:env(safe-area-inset-top);}
+.app{max-width:560px;margin:0 auto;min-height:100%;padding:18px 16px calc(96px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:14px}
+.brand{font-weight:700;letter-spacing:.28em;font-size:15px;color:var(--walnut)}
+.brand small{display:block;font-weight:400;letter-spacing:.12em;font-size:11px;color:var(--muted);margin-top:3px;text-transform:uppercase}
+.iconbtn{background:var(--sand);border:0;color:var(--walnut);border-radius:12px;padding:9px 12px;font:inherit;font-size:13px;font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.stat b{display:block;font-size:22px;color:var(--walnut)}
+.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.stat.alert b{color:var(--bad)}
+.search{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);font:inherit;color:var(--ink);margin-bottom:10px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:8px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:transparent;color:var(--walnut);border-radius:999px;padding:6px 13px;font:inherit;font-size:13px}
+.chip.on{background:var(--walnut);color:var(--bg);border-color:var(--walnut)}
+.item{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:8px}
+.swatch{width:40px;height:40px;border-radius:50%;flex:none;border:2px solid var(--sand);box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+.tile{width:40px;height:40px;border-radius:12px;flex:none;background:var(--sand);display:grid;place-items:center;color:var(--walnut);font-weight:700}
+.info{flex:1;min-width:0}
+.info .t{font-weight:500;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.info .s{font-size:12px;color:var(--muted);margin-top:2px}
+.badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:1px}
+.badge.low{background:#F1DDB5;color:#8A5B0F}.badge.out{background:#EBCFC6;color:var(--bad)}
+.qty{display:flex;align-items:center;gap:4px;flex:none}
+.qty button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--walnut);font-size:19px;line-height:1;padding:0}
+.qty button:active{background:var(--sand)}
+.qty .n{min-width:28px;text-align:center;font-weight:700;font-size:17px;color:var(--walnut)}
+.edit{background:none;border:0;color:var(--muted);font-size:18px;padding:4px 2px}
+.empty{text-align:center;color:var(--muted);padding:40px 20px;font-size:14px;line-height:1.5}
+nav{position:fixed;left:0;right:0;bottom:0;background:rgba(244,237,225,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);
+  padding:8px 16px calc(8px + env(safe-area-inset-bottom));display:flex;gap:8px;justify-content:center}
+nav .in{display:flex;gap:8px;width:100%;max-width:560px;align-items:center}
+.tab{flex:1;background:none;border:0;padding:10px;border-radius:12px;font:inherit;font-weight:500;color:var(--muted);font-size:14px}
+.tab.on{background:var(--sand);color:var(--walnut)}
+.fab{flex:none;width:50px;height:50px;border-radius:50%;border:0;background:var(--walnut);color:var(--bg);font-size:28px;line-height:1;box-shadow:0 4px 12px rgba(90,62,43,.3)}
+.sheetbg{position:fixed;inset:0;background:rgba(59,42,30,.4);display:none;align-items:flex-end;justify-content:center;z-index:10}
+.sheetbg.open{display:flex}
+.sheet{background:var(--bg);width:100%;max-width:560px;border-radius:22px 22px 0 0;padding:20px 18px calc(20px + env(safe-area-inset-bottom));max-height:90%;overflow:auto}
+.sheet h2{margin:0 0 14px;font-size:17px;letter-spacing:.04em;color:var(--walnut)}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px;text-transform:uppercase;letter-spacing:.08em}
+.f{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card);font:inherit;color:var(--ink)}
+.row{display:flex;gap:10px}.row>div{flex:1}
+input[type=color].f{padding:3px;height:46px}
+.actions{display:flex;gap:10px;margin-top:18px}
+.btn{flex:1;padding:13px;border-radius:12px;border:0;font:inherit;font-weight:700;background:var(--walnut);color:var(--bg)}
+.btn.sec{background:var(--sand);color:var(--walnut)}
+.btn.del{flex:none;background:#EBCFC6;color:var(--bad)}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand">STUDIO VLDMN<small>Voorraadbeheer</small></div>
+    <button class="iconbtn" data-act="backup">Back-up</button>
+  </header>
+  <div class="stats" id="stats"></div>
+  <input class="search" id="q" type="search" placeholder="Zoeken…">
+  <div class="chips" id="chips"></div>
+  <div id="list"></div>
+</div>
+
+<nav><div class="in">
+  <button class="tab on" data-tab="filament">Filament</button>
+  <button class="fab" data-act="add" aria-label="Toevoegen">+</button>
+  <button class="tab" data-tab="products">Producten</button>
+</div></nav>
+
+<div class="sheetbg" id="bg"><div class="sheet" id="sheet"></div></div>
+<input type="file" id="imp" accept="application/json" hidden>
+
+<script>
+const TYPES=['PLA','PLA+','PETG','ABS','ASA','TPU','Silk','Matte','Anders'];
+const CATS=['Decoratie','Accessoires','Cadeaus'];
+const KEY='vldmn-voorraad-v1';
+let S={filament:[],products:[]}, tab='filament', filter='Alles', query='';
+
+try{const r=localStorage.getItem(KEY); if(r) S=JSON.parse(r);}catch(e){}
+if(!S.filament)S.filament=[]; if(!S.products)S.products=[];
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=s=>document.querySelector(s);
+
+function status(it){
+  if(tab==='filament'){ if(it.spools<=0&&!(it.open>0))return 'out'; if(it.spools<it.min)return 'low'; return 'ok'; }
+  if(it.stock<=0)return 'out'; if(it.stock<it.min)return 'low'; return 'ok';
+}
+const badge=s=>s==='out'?'<span class="badge out">Op</span>':s==='low'?'<span class="badge low">Laag</span>':'';
+
+function render(){
+  const f=S.filament,p=S.products;
+  const lowF=f.filter(i=>{tab='filament';return status(i)!=='ok'}).length;
+  tab=document.querySelector('.tab.on').dataset.tab;
+  const lowP=p.filter(i=>{const t=tab;tab='products';const s=status(i);tab=t;return s!=='ok'}).length;
+  $('#stats').innerHTML=
+   `<div class="stat"><b>${f.reduce((a,i)=>a+(+i.spools||0),0)}</b><span>Spoelen</span></div>`+
+   `<div class="stat"><b>${p.reduce((a,i)=>a+(+i.stock||0),0)}</b><span>Producten</span></div>`+
+   `<div class="stat ${lowF+lowP?'alert':''}"><b>${lowF+lowP}</b><span>Bijbestellen</span></div>`;
+
+  const groups=tab==='filament'?TYPES:CATS;
+  const used=['Alles',...groups.filter(g=>(tab==='filament'?f:p).some(i=>(i.type||i.cat)===g))];
+  if(!used.includes(filter))filter='Alles';
+  $('#chips').innerHTML=used.map(g=>`<button class="chip ${g===filter?'on':''}" data-chip="${esc(g)}">${esc(g)}</button>`).join('');
+
+  const q=query.toLowerCase();
+  let items=(tab==='filament'?f:p).filter(i=>(filter==='Alles'||(i.type||i.cat)===filter)&&
+    JSON.stringify(i).toLowerCase().includes(q));
+  items.sort((a,b)=>({out:0,low:1,ok:2}[status(a)]-{out:0,low:1,ok:2}[status(b)])||
+    String(a.color||a.name).localeCompare(String(b.color||b.name)));
+
+  $('#list').innerHTML=items.length?items.map(i=>{
+    const st=status(i);
+    if(tab==='filament') return `<div class="item">
+      <div class="swatch" style="background:${esc(i.hex)}"></div>
+      <div class="info"><div class="t">${esc(i.color)}${badge(st)}</div>
+      <div class="s">${esc(i.brand||'—')} · ${esc(i.type)}${i.open>0?' · open: '+i.open+' g':''}</div></div>
+      <div class="qty"><button data-dec="${i.id}">−</button><span class="n">${i.spools}</span><button data-inc="${i.id}">+</button></div>
+      <button class="edit" data-edit="${i.id}">✎</button></div>`;
+    return `<div class="item">
+      <div class="tile">${esc((i.name||'?')[0].toUpperCase())}</div>
+      <div class="info"><div class="t">${esc(i.name)}${badge(st)}</div>
+      <div class="s">${esc(i.cat)}${i.price?' · €'+Number(i.price).toFixed(2).replace('.',','):''}</div></div>
+      <div class="qty"><button data-dec="${i.id}">−</button><span class="n">${i.stock}</span><button data-inc="${i.id}">+</button></div>
+      <button class="edit" data-edit="${i.id}">✎</button></div>`;
+  }).join(''):`<div class="empty">${(tab==='filament'?f:p).length?'Niets gevonden.':
+    tab==='filament'?'Nog geen filament.<br>Tik op + om je eerste spoel toe te voegen.':'Nog geen producten.<br>Tik op + om je eerste product toe te voegen.'}</div>`;
+}
+
+function opts(arr,sel){return arr.map(o=>`<option ${o===sel?'selected':''}>${esc(o)}</option>`).join('')}
+
+function openSheet(id){
+  const list=S[tab], it=id?list.find(x=>x.id===id):null;
+  let h='';
+  if(tab==='filament'){
+    const d=it||{brand:'',type:'PLA',color:'',hex:'#B5714A',spools:1,open:0,min:1};
+    h=`<h2>${it?'Filament bewerken':'Nieuw filament'}</h2>
+    <label>Kleurnaam</label><input class="f" id="f_color" value="${esc(d.color)}" placeholder="bijv. Sand Beige">
+    <div class="row"><div><label>Merk</label><input class="f" id="f_brand" value="${esc(d.brand)}" placeholder="bijv. Bambu Lab"></div>
+    <div><label>Type</label><select class="f" id="f_type">${opts(TYPES,d.type)}</select></div></div>
+    <div class="row"><div><label>Kleur</label><input class="f" type="color" id="f_hex" value="${esc(d.hex)}"></div>
+    <div><label>Spoelen</label><input class="f" type="number" inputmode="numeric" min="0" id="f_spools" value="${d.spools}"></div></div>
+    <div class="row"><div><label>Open spoel (g)</label><input class="f" type="number" inputmode="numeric" min="0" id="f_open" value="${d.open}"></div>
+    <div><label>Minimum spoelen</label><input class="f" type="number" inputmode="numeric" min="0" id="f_min" value="${d.min}"></div></div>`;
+  }else{
+    const d=it||{name:'',cat:'Decoratie',stock:0,min:2,price:''};
+    h=`<h2>${it?'Product bewerken':'Nieuw product'}</h2>
+    <label>Naam</label><input class="f" id="p_name" value="${esc(d.name)}" placeholder="bijv. Vaas Dune">
+    <div class="row"><div><label>Categorie</label><select class="f" id="p_cat">${opts(CATS,d.cat)}</select></div>
+    <div><label>Prijs (€)</label><input class="f" type="number" inputmode="decimal" step="0.01" id="p_price" value="${esc(d.price)}"></div></div>
+    <div class="row"><div><label>Voorraad</label><input class="f" type="number" inputmode="numeric" min="0" id="p_stock" value="${d.stock}"></div>
+    <div><label>Minimum</label><input class="f" type="number" inputmode="numeric" min="0" id="p_min" value="${d.min}"></div></div>`;
+  }
+  h+=`<div class="actions">${it?`<button class="btn del" data-del="${it.id}">Verwijder</button>`:''}
+    <button class="btn sec" data-close>Annuleer</button><button class="btn" data-save="${it?it.id:''}">Opslaan</button></div>`;
+  $('#sheet').innerHTML=h; $('#bg').classList.add('open');
+}
+const closeSheet=()=>$('#bg').classList.remove('open');
+const num=id=>Math.max(0,parseInt($(id).value)||0);
+
+function saveSheet(id){
+  let rec;
+  if(tab==='filament'){
+    const color=$('#f_color').value.trim(); if(!color){$('#f_color').focus();return;}
+    rec={color,brand:$('#f_brand').value.trim(),type:$('#f_type').value,hex:$('#f_hex').value,
+      spools:num('#f_spools'),open:num('#f_open'),min:num('#f_min')};
+  }else{
+    const name=$('#p_name').value.trim(); if(!name){$('#p_name').focus();return;}
+    rec={name,cat:$('#p_cat').value,price:$('#p_price').value,stock:num('#p_stock'),min:num('#p_min')};
+  }
+  if(id){const i=S[tab].findIndex(x=>x.id===id);S[tab][i]={...S[tab][i],...rec};}
+  else S[tab].push({id:uid(),...rec});
+  save();closeSheet();render();
+}
+
+function bump(id,d){
+  const it=S[tab].find(x=>x.id===id); if(!it)return;
+  const k=tab==='filament'?'spools':'stock';
+  it[k]=Math.max(0,(+it[k]||0)+d); save(); render();
+}
+
+function backup(){
+  const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='vldmn-voorraad-'+new Date().toISOString().slice(0,10)+'.json';a.click();
+  setTimeout(()=>{if(confirm('Back-up gedownload.\n\nOok een back-up terugzetten? (overschrijft huidige voorraad)'))$('#imp').click()},400);
+}
+$('#imp').addEventListener('change',e=>{
+  const fl=e.target.files[0]; if(!fl)return;
+  fl.text().then(t=>{try{const d=JSON.parse(t);
+    if(Array.isArray(d.filament)&&Array.isArray(d.products)){S=d;save();render();}else alert('Ongeldig bestand.');
+  }catch(_){alert('Ongeldig bestand.')} e.target.value='';});
+});
+
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button,#bg'); if(!t)return;
+  const d=t.dataset;
+  if(t.id==='bg'&&e.target===t)return closeSheet();
+  if(d.tab){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b===t));tab=d.tab;filter='Alles';query='';$('#q').value='';render();}
+  else if(d.chip){filter=d.chip;render();}
+  else if(d.act==='add')openSheet();
+  else if(d.act==='backup')backup();
+  else if(d.edit)openSheet(d.edit);
+  else if(d.inc)bump(d.inc,1);
+  else if(d.dec)bump(d.dec,-1);
+  else if('close' in d)closeSheet();
+  else if('save' in d)saveSheet(d.save);
+  else if(d.del){if(confirm('Weet je het zeker?')){S[tab]=S[tab].filter(x=>x.id!==d.del);save();closeSheet();render();}}
+});
+$('#bg').addEventListener('click',e=>{if(e.target.id==='bg')closeSheet()});
+$('#q').addEventListener('input',e=>{query=e.target.value;render();});
+
+// PWA-manifest inline, zodat "Zet op beginscherm" werkt
+try{
+  const icon='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="#F4EDE1"/><text x="96" y="122" font-family="sans-serif" font-size="84" font-weight="700" text-anchor="middle" fill="#5A3E2B">V</text></svg>');
+  const m={name:'Studio VLDMN Voorraad',short_name:'VLDMN',display:'standalone',background_color:'#F4EDE1',theme_color:'#F4EDE1',start_url:location.href,
+    icons:[{src:icon,sizes:'192x192',type:'image/svg+xml',purpose:'any'}]};
+  const l=document.createElement('link');l.rel='manifest';
+  l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/manifest+json'}));document.head.appendChild(l);
+}catch(e){}
+
+render();
+</script>
+</body>
+</html>
