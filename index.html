@@ -70,6 +70,86 @@ input[type=color].f{padding:3px;height:46px}
 .btn{flex:1;padding:13px;border-radius:12px;border:0;font:inherit;font-weight:700;background:var(--walnut);color:var(--bg)}
 .btn.sec{background:var(--sand);color:var(--walnut)}
 .btn.del{flex:none;background:#EBCFC6;color:var(--bad)}
+#calc{--surface:var(--card);--border:var(--line);--text:var(--ink);--accent:var(--walnut);--accent-bg:#EFE3D2;--green:#6F7F4F;--green-bg:#EEF0E2;--green-bd:#CDD5B3;--red:#B4533C;--red-bg:#F3E1DA;--red-bd:#E3BFB2;--yellow:#8A5B0F;--yellow-bg:#F6EBD0;--yellow-bd:#E8D3A0;--r:14px;--rs:8px}
+#calc .cmain{display:flex;flex-direction:column;gap:14px}
+#calc label{text-transform:none;letter-spacing:0;margin:0;color:var(--ink)}
+#calc .fsel{width:160px;max-width:44vw;background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:9px 8px;font:inherit;font-size:13px;color:var(--ink)}
+#calc .clr{margin-left:auto;background:var(--sand);border:0;color:var(--walnut);border-radius:10px;padding:7px 11px;font:inherit;font-size:12px;font-weight:500}
+#calc .card{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);overflow:hidden}
+#calc .card-header{padding:13px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:#F7F1E6}
+#calc .step{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+#calc .card-title{font-size:14px;font-weight:600}
+#calc .card-sub{font-size:12px;color:var(--muted);margin-top:1px}
+#calc .isec{padding:0 16px}
+#calc .slabel{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);padding:12px 0 6px;border-bottom:1px solid var(--border)}
+#calc .irow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
+#calc .irow:last-child{border-bottom:none}
+#calc .ilbl{flex:1}
+#calc .ilbl span{font-size:14px;font-weight:500;display:block}
+#calc .ilbl small{font-size:11px;color:var(--muted)}
+#calc .ifield{position:relative;flex-shrink:0}
+#calc .ifield .pre{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--muted);pointer-events:none;z-index:1}
+#calc .ifield .suf{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--muted);pointer-events:none;z-index:1}
+#calc input[type=number]{width:108px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 10px;font-size:14px;font-family:inherit;font-weight:500;color:var(--text);text-align:right;transition:border-color .15s,box-shadow .15s,background .15s;-moz-appearance:textfield}
+#calc input[type=number]::-webkit-inner-spin-button,#calc input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}
+#calc input[type=number]:focus{outline:none;border-color:#B5714A;box-shadow:0 0 0 3px rgba(181,113,74,.15);background:#fff}
+#calc input[type=number]::placeholder{color:#C9B8A0;font-weight:400}
+#calc .ifield.hp input{padding-left:22px;text-align:left}
+#calc .ifield.hs input{padding-right:28px}
+#calc .cost-summary{background:#F7F1E6;border-top:1px solid var(--border);padding:12px 16px}
+#calc .crow{display:flex;justify-content:space-between;align-items:center;padding:3px 0}
+#calc .crow .l{font-size:13px;color:var(--muted)}
+#calc .crow .v{font-size:13px;font-weight:600;color:var(--text)}
+#calc .ctotal{margin-top:8px;padding-top:10px;border-top:1px solid var(--border)}
+#calc .ctotal .l{font-size:14px;font-weight:700;color:var(--text)}
+#calc .ctotal .v{font-size:22px;font-weight:800;color:var(--accent)}
+#calc .mwrap{padding:14px 16px}
+#calc .mrow{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+#calc .mrow label{font-size:14px;font-weight:500;flex:1}
+#calc .pills{display:flex;gap:6px;flex-wrap:wrap}
+#calc .pill{padding:7px 15px;border-radius:20px;border:1.5px solid var(--border);background:var(--bg);font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .15s;font-family:inherit}
+#calc .pill:hover{border-color:var(--accent);color:var(--accent)}
+#calc .pill.on{background:var(--accent);border-color:var(--accent);color:#fff}
+#calc .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 16px}
+#calc .ptog{border:2px solid var(--border);border-radius:12px;padding:13px 12px;cursor:pointer;background:var(--bg);position:relative;transition:all .15s;user-select:none}
+#calc .ptog input{position:absolute;opacity:0;width:0;height:0}
+#calc .ptog-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px}
+#calc .ptog-sub{font-size:11px;color:var(--muted)}
+#calc .ptog-chk{position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;transition:all .15s}
+#calc .ptog.on{border-color:var(--accent);background:var(--accent-bg)}
+#calc .ptog.on .ptog-name{color:var(--accent)}
+#calc .ptog.on .ptog-chk{background:var(--accent);border-color:var(--accent)}
+#calc .pdet{display:none;border-top:1px solid var(--border)}
+#calc .pdet.open{display:block}
+#calc .pdet-title{padding:10px 16px 4px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--muted)}
+#calc .rempty{padding:32px 16px;text-align:center;color:var(--muted);font-size:14px;line-height:1.8}
+#calc .rempty span{font-size:32px;display:block;margin-bottom:8px}
+#calc .rblock{border-bottom:1px solid var(--border)}
+#calc .rblock:last-of-type{border-bottom:none}
+#calc .rtop{padding:14px 16px 8px;display:flex;justify-content:space-between;align-items:flex-start}
+#calc .rname{font-size:15px;font-weight:700}
+#calc .rright{text-align:right}
+#calc .rprice{font-size:28px;font-weight:800;color:var(--accent);line-height:1}
+#calc .rprice-note{font-size:11px;color:var(--muted);margin-top:3px}
+#calc .rrows{padding:0 16px 10px;display:flex;flex-direction:column;gap:5px}
+#calc .rrow{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+#calc .rrow.total{font-size:14px;font-weight:700;border-top:1px dashed var(--border);padding-top:8px;margin-top:4px}
+#calc .rrow.total.pos{color:var(--green)}
+#calc .rrow.total.neg{color:var(--red)}
+#calc .cbadge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin:0 16px 14px}
+#calc .cbadge.best{background:var(--accent-bg);color:var(--accent);border:1px solid var(--line)}
+#calc .cbadge.good{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd)}
+#calc .cbadge.warn{background:var(--yellow-bg);color:var(--yellow);border:1px solid var(--yellow-bd)}
+#calc .cbadge.bad{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd)}
+#calc .advies{margin:0 16px 16px;border-radius:10px;padding:14px;font-size:13px;line-height:1.7}
+#calc .advies.good{background:var(--green-bg);border:1px solid var(--green-bd)}
+#calc .advies.warn{background:var(--yellow-bg);border:1px solid var(--yellow-bd)}
+#calc .advies.bad{background:var(--red-bg);border:1px solid var(--red-bd)}
+#calc .advies-title{font-weight:700;font-size:14px;margin-bottom:5px}
+#calc .advies.good .advies-title{color:var(--green)}
+#calc .advies.warn .advies-title{color:var(--yellow)}
+#calc .advies.bad .advies-title{color:var(--red)}
+#calc .green-txt{font-size:13px;font-weight:600;color:var(--green);padding:9px 0}
 </style>
 </head>
 <body>
@@ -78,16 +158,176 @@ input[type=color].f{padding:3px;height:46px}
     <div class="brandwrap"><img class="logo" alt="Studio VLDMN" src="data:image/png;base64,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"><div class="brand">STUDIO VLDMN<small>Voorraadbeheer</small></div></div>
     <button class="iconbtn" data-act="backup">Back-up</button>
   </header>
+  <div id="inv">
   <div class="stats" id="stats"></div>
   <input class="search" id="q" type="search" placeholder="Zoeken…">
   <div class="chips" id="chips"></div>
   <div id="list"></div>
+  </div>
+  <div id="calc" hidden><div class="cmain">
+
+  <!-- STAP 1 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="step">1</div>
+      <div><div class="card-title">Productiekosten</div><div class="card-sub">Vul de kosten in voor dit artikel</div></div>
+      <button class="clr" onclick="clearItem()">Wissen</button>
+    </div>
+    <div class="isec">
+      <div class="slabel">Materiaal</div>
+      <div class="irow"><div class="ilbl"><span>Filament uit voorraad</span><small>vult prijs per kg in</small></div><select id="fpick" class="fsel"></select></div>
+      <div class="irow">
+        <div class="ilbl"><span>Filament gebruikt</span><small>gram</small></div>
+        <div class="ifield hs"><input type="number" id="gram" placeholder="0" min="0" step="1"><span class="suf">g</span></div>
+      </div>
+      <div class="irow">
+        <div class="ilbl"><span>Prijs filament</span><small>per kilogram</small></div>
+        <div class="ifield hp"><span class="pre">€</span><input type="number" id="filamentprijs" placeholder="0,00" min="0" step="0.5"></div>
+      </div>
+      <div class="slabel">Energie &amp; Tijd</div>
+      <div class="irow">
+        <div class="ilbl"><span>Printtijd</span><small>in uren</small></div>
+        <div class="ifield hs"><input type="number" id="printtijd" placeholder="0" min="0" step="0.25"><span class="suf">u</span></div>
+      </div>
+      <div class="irow">
+        <div class="ilbl"><span>Stroom per uur</span><small>kosten printer</small></div>
+        <div class="ifield hp"><span class="pre">€</span><input type="number" id="stroom" placeholder="0,00" min="0" step="0.01"></div>
+      </div>
+      <div class="irow">
+        <div class="ilbl"><span>Uurtarief arbeid</span><small>jouw tijd</small></div>
+        <div class="ifield hp"><span class="pre">€</span><input type="number" id="arbeid" placeholder="0,00" min="0" step="0.5"></div>
+      </div>
+      <div class="irow">
+        <div class="ilbl"><span>Arbeidsuren</span><small>bestede uren</small></div>
+        <div class="ifield hs"><input type="number" id="arbeidsuren" placeholder="0" min="0" step="0.25"><span class="suf">u</span></div>
+      </div>
+      <div class="slabel">Overig</div>
+      <div class="irow">
+        <div class="ilbl"><span>Verpakking</span><small>dozen, folie, tape</small></div>
+        <div class="ifield hp"><span class="pre">€</span><input type="number" id="verpakking" placeholder="0,00" min="0" step="0.1"></div>
+      </div>
+      <div class="irow">
+        <div class="ilbl"><span>Overige kosten</span><small>mislukte prints etc.</small></div>
+        <div class="ifield hp"><span class="pre">€</span><input type="number" id="overig" placeholder="0,00" min="0" step="0.05"></div>
+      </div>
+      <div class="slabel">Printer afschrijving</div>
+      <div class="irow">
+        <div class="ilbl"><span>Aanschafprijs printer</span></div>
+        <div class="ifield hp"><span class="pre">€</span><input type="number" id="printer-prijs" placeholder="0" min="0" step="10"></div>
+      </div>
+      <div class="irow">
+        <div class="ilbl"><span>Levensduur printer</span><small>geschatte uren</small></div>
+        <div class="ifield hs"><input type="number" id="printer-uren" placeholder="0" min="1" step="100"><span class="suf">u</span></div>
+      </div>
+    </div>
+    <div class="cost-summary">
+      <div class="crow"><span class="l">Materiaalkosten</span><span class="v" id="s-mat">€ 0,00</span></div>
+      <div class="crow"><span class="l">Energie &amp; arbeid</span><span class="v" id="s-eng">€ 0,00</span></div>
+      <div class="crow"><span class="l">Afschrijving printer</span><span class="v" id="s-afs">€ 0,00</span></div>
+      <div class="crow"><span class="l">Overig</span><span class="v" id="s-ov">€ 0,00</span></div>
+      <div class="crow ctotal"><span class="l">Totale kostprijs</span><span class="v" id="totaal">€ 0,00</span></div>
+    </div>
+  </div>
+
+  <!-- STAP 2 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="step">2</div>
+      <div><div class="card-title">Gewenste winstmarge</div><div class="card-sub">Percentage bovenop de totale kostprijs</div></div>
+    </div>
+    <div class="mwrap">
+      <div class="mrow">
+        <label>Winstmarge</label>
+        <div class="ifield hs"><input type="number" id="marge" placeholder="0" min="0" step="5" style="width:90px"><span class="suf">%</span></div>
+      </div>
+      <div class="pills">
+        <button class="pill" onclick="setM(20)">20%</button>
+        <button class="pill" onclick="setM(30)">30%</button>
+        <button class="pill" onclick="setM(40)">40%</button>
+        <button class="pill" onclick="setM(50)">50%</button>
+        <button class="pill" onclick="setM(75)">75%</button>
+        <button class="pill" onclick="setM(100)">100%</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAP 3 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="step">3</div>
+      <div><div class="card-title">Verkoopplatform(s)</div><div class="card-sub">Vink aan waar je wilt verkopen</div></div>
+    </div>
+    <div class="pgrid">
+      <div class="ptog" id="pt-bol" onclick="tp('bol')"><input type="checkbox"><div class="ptog-name">Bol.com</div><div class="ptog-sub">% + vaste fee</div><div class="ptog-chk">✓</div></div>
+      <div class="ptog" id="pt-etsy" onclick="tp('etsy')"><input type="checkbox"><div class="ptog-name">Etsy</div><div class="ptog-sub">% commissie</div><div class="ptog-chk">✓</div></div>
+      <div class="ptog" id="pt-amazon" onclick="tp('amazon')"><input type="checkbox"><div class="ptog-name">Amazon</div><div class="ptog-sub">% + kosten</div><div class="ptog-chk">✓</div></div>
+      <div class="ptog" id="pt-vinted" onclick="tp('vinted')"><input type="checkbox"><div class="ptog-name">Vinted</div><div class="ptog-sub">Geen commissie</div><div class="ptog-chk">✓</div></div>
+      <div class="ptog" id="pt-eigen" onclick="tp('eigen')"><input type="checkbox"><div class="ptog-name">Eigen / Direct</div><div class="ptog-sub">Zelf instellen</div><div class="ptog-chk">✓</div></div>
+    </div>
+
+    <div class="pdet" id="pd-bol">
+      <div class="pdet-title">Bol.com — instellingen</div>
+      <div class="isec">
+        <div class="irow"><div class="ilbl"><span>Commissie</span></div><div class="ifield hs"><input type="number" id="bol-perc" value="12.4" min="0" step="0.1"><span class="suf">%</span></div></div>
+        <div class="irow"><div class="ilbl"><span>Vaste fee per artikel</span></div><div class="ifield hp"><span class="pre">€</span><input type="number" id="bol-vast" value="0.20" min="0" step="0.05"></div></div>
+        <div class="irow"><div class="ilbl"><span>Verzendkosten</span><small>inbegrepen in verkoopprijs</small></div><div class="ifield hp"><span class="pre">€</span><input type="number" id="bol-verzend" placeholder="0,00" min="0" step="0.05"></div></div>
+      </div>
+    </div>
+
+    <div class="pdet" id="pd-etsy">
+      <div class="pdet-title">Etsy — instellingen</div>
+      <div class="isec">
+        <div class="irow"><div class="ilbl"><span>Commissie</span></div><div class="ifield hs"><input type="number" id="etsy-perc" value="6.5" min="0" step="0.1"><span class="suf">%</span></div></div>
+        <div class="irow"><div class="ilbl"><span>Verzendkosten</span></div><div class="ifield hp"><span class="pre">€</span><input type="number" id="etsy-verzend" placeholder="0,00" min="0" step="0.05"></div></div>
+      </div>
+    </div>
+
+    <div class="pdet" id="pd-amazon">
+      <div class="pdet-title">Amazon — instellingen</div>
+      <div class="isec">
+        <div class="irow"><div class="ilbl"><span>Commissie</span></div><div class="ifield hs"><input type="number" id="amazon-perc" value="15" min="0" step="0.5"><span class="suf">%</span></div></div>
+        <div class="irow"><div class="ilbl"><span>Vaste fee per artikel</span></div><div class="ifield hp"><span class="pre">€</span><input type="number" id="amazon-vast" placeholder="0,00" min="0" step="0.05"></div></div>
+        <div class="irow"><div class="ilbl"><span>Verzendkosten</span></div><div class="ifield hp"><span class="pre">€</span><input type="number" id="amazon-verzend" placeholder="0,00" min="0" step="0.05"></div></div>
+      </div>
+    </div>
+
+    <div class="pdet" id="pd-vinted">
+      <div class="pdet-title">Vinted — instellingen</div>
+      <div class="isec">
+        <div class="irow"><div class="ilbl"><span>Commissie</span></div><div class="green-txt">Geen ✓</div></div>
+        <div class="irow"><div class="ilbl"><span>Verzending</span></div><div class="green-txt">Gratis voor verkoper ✓</div></div>
+      </div>
+    </div>
+
+    <div class="pdet" id="pd-eigen">
+      <div class="pdet-title">Eigen / Direct — instellingen</div>
+      <div class="isec">
+        <div class="irow"><div class="ilbl"><span>Commissie</span><small>marktplaats, shop etc.</small></div><div class="ifield hs"><input type="number" id="eigen-perc" placeholder="0" min="0" step="0.5"><span class="suf">%</span></div></div>
+        <div class="irow"><div class="ilbl"><span>Vaste kosten</span><small>transactie, listing etc.</small></div><div class="ifield hp"><span class="pre">€</span><input type="number" id="eigen-vast" placeholder="0,00" min="0" step="0.05"></div></div>
+        <div class="irow"><div class="ilbl"><span>Verzendkosten</span></div><div class="ifield hp"><span class="pre">€</span><input type="number" id="eigen-verzend" placeholder="0,00" min="0" step="0.05"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAP 4 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="step">4</div>
+      <div><div class="card-title">Resultaten &amp; Advies</div><div class="card-sub">Aanbevolen verkoopprijs per platform</div></div>
+    </div>
+    <div id="rb">
+      <div class="rempty"><span>📊</span>Selecteer één of meerdere platforms in stap 3 om de berekening te zien.</div>
+    </div>
+  </div>
+
+</div></div>
 </div>
 
 <nav><div class="in">
   <button class="tab on" data-tab="filament">Filament</button>
-  <button class="fab" data-act="add" aria-label="Toevoegen">+</button>
   <button class="tab" data-tab="products">Producten</button>
+  <button class="tab" data-tab="calc">Prijs</button>
+  <button class="fab" data-act="add" aria-label="Toevoegen">+</button>
 </div></nav>
 
 <div class="sheetbg" id="bg"><div class="sheet" id="sheet"></div></div>
@@ -138,7 +378,7 @@ function render(){
     if(tab==='filament') return `<div class="item">
       <div class="swatch" style="background:${esc(i.hex)}"></div>
       <div class="info"><div class="t">${esc(i.color)}${badge(st)}</div>
-      <div class="s">${esc(i.brand||'—')} · ${esc(i.type)}${i.open>0?' · open: '+i.open+' g':''}</div></div>
+      <div class="s">${esc(i.brand||'—')} · ${esc(i.type)}${i.open>0?' · open: '+i.open+' g':''}${parseFloat(i.kg)>0?' · €'+i.kg+'/kg':''}</div></div>
       <div class="qty"><button data-dec="${i.id}">−</button><span class="n">${i.spools}</span><button data-inc="${i.id}">+</button></div>
       <button class="edit" data-edit="${i.id}">✎</button></div>`;
     return `<div class="item">
@@ -157,7 +397,7 @@ function openSheet(id){
   const list=S[tab], it=id?list.find(x=>x.id===id):null;
   let h='';
   if(tab==='filament'){
-    const d=it||{brand:'',type:'PLA',color:'',hex:'#B5714A',spools:1,open:0,min:1};
+    const d=it||{brand:'',type:'PLA',color:'',hex:'#B5714A',spools:1,open:0,min:1,kg:''};
     h=`<h2>${it?'Filament bewerken':'Nieuw filament'}</h2>
     <label>Kleurnaam</label><input class="f" id="f_color" value="${esc(d.color)}" placeholder="bijv. Sand Beige">
     <div class="row"><div><label>Merk</label><input class="f" id="f_brand" value="${esc(d.brand)}" placeholder="bijv. Bambu Lab"></div>
@@ -165,7 +405,8 @@ function openSheet(id){
     <div class="row"><div><label>Kleur</label><input class="f" type="color" id="f_hex" value="${esc(d.hex)}"></div>
     <div><label>Spoelen</label><input class="f" type="number" inputmode="numeric" min="0" id="f_spools" value="${d.spools}"></div></div>
     <div class="row"><div><label>Open spoel (g)</label><input class="f" type="number" inputmode="numeric" min="0" id="f_open" value="${d.open}"></div>
-    <div><label>Minimum spoelen</label><input class="f" type="number" inputmode="numeric" min="0" id="f_min" value="${d.min}"></div></div>`;
+    <div><label>Minimum spoelen</label><input class="f" type="number" inputmode="numeric" min="0" id="f_min" value="${d.min}"></div></div>
+    <label>Prijs per kg (€) · voor de prijscalculator</label><input class="f" type="number" inputmode="decimal" step="0.5" id="f_kg" value="${esc(d.kg)}">`;
   }else{
     const d=it||{name:'',cat:'Decoratie',stock:0,min:2,price:''};
     h=`<h2>${it?'Product bewerken':'Nieuw product'}</h2>
@@ -187,7 +428,7 @@ function saveSheet(id){
   if(tab==='filament'){
     const color=$('#f_color').value.trim(); if(!color){$('#f_color').focus();return;}
     rec={color,brand:$('#f_brand').value.trim(),type:$('#f_type').value,hex:$('#f_hex').value,
-      spools:num('#f_spools'),open:num('#f_open'),min:num('#f_min')};
+      spools:num('#f_spools'),open:num('#f_open'),min:num('#f_min'),kg:$('#f_kg').value};
   }else{
     const name=$('#p_name').value.trim(); if(!name){$('#p_name').focus();return;}
     rec={name,cat:$('#p_cat').value,price:$('#p_price').value,stock:num('#p_stock'),min:num('#p_min')};
@@ -220,7 +461,7 @@ document.addEventListener('click',e=>{
   const t=e.target.closest('button,#bg'); if(!t)return;
   const d=t.dataset;
   if(t.id==='bg'&&e.target===t)return closeSheet();
-  if(d.tab){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b===t));tab=d.tab;filter='Alles';query='';$('#q').value='';render();}
+  if(d.tab){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b===t));tab=d.tab;const c=tab==='calc';$('#inv').hidden=c;$('#calc').hidden=!c;$('.fab').style.visibility=c?'hidden':'visible';$('.brand small').textContent=c?'Prijscalculator':'Voorraadbeheer';window.scrollTo(0,0);if(c){refreshPicker();}else{filter='Alles';query='';$('#q').value='';render();}}
   else if(d.chip){filter=d.chip;render();}
   else if(d.act==='add')openSheet();
   else if(d.act==='backup')backup();
@@ -244,6 +485,149 @@ try{
 }catch(e){}
 
 render();
+</script>
+<script>
+
+const act = new Set();
+const nm  = {bol:'Bol.com',etsy:'Etsy',amazon:'Amazon',vinted:'Vinted',eigen:'Eigen / Direct'};
+
+function tp(p) {
+  const el = document.getElementById('pt-'+p);
+  const pd = document.getElementById('pd-'+p);
+  if (act.has(p)) { act.delete(p); el.classList.remove('on'); pd.classList.remove('open'); }
+  else { act.add(p); el.classList.add('on'); pd.classList.add('open'); }
+  calc();
+}
+
+function setM(v) {
+  document.getElementById('marge').value = v;
+  document.querySelectorAll('.pill').forEach(b => b.classList.toggle('on', parseInt(b.textContent) === v));
+  calc();
+}
+
+function g(id) { return parseFloat(document.getElementById(id)?.value) || 0; }
+function fmt(v) { return '\u20AC\u00a0' + v.toFixed(2).replace('.',','); }
+
+function calc() {
+  saveCalc();
+  const mat = (g('gram')/1000)*g('filamentprijs');
+  const eng = g('printtijd')*g('stroom') + g('arbeidsuren')*g('arbeid');
+  const afs = g('printer-uren')>0 ? (g('printer-prijs')/g('printer-uren'))*g('printtijd') : 0;
+  const ov  = g('verpakking')+g('overig');
+  const tot = mat+eng+afs+ov;
+
+  document.getElementById('s-mat').textContent = fmt(mat);
+  document.getElementById('s-eng').textContent = fmt(eng);
+  document.getElementById('s-afs').textContent = fmt(afs);
+  document.getElementById('s-ov').textContent  = fmt(ov);
+  document.getElementById('totaal').textContent = fmt(tot);
+
+  const basis = tot * (1 + g('marge')/100);
+
+  if (!act.size) {
+    document.getElementById('rb').innerHTML = '<div class="rempty"><span>📊</span>Selecteer één of meerdere platforms in stap 3 om de berekening te zien.</div>';
+    return;
+  }
+
+  const res = [];
+  act.forEach(p => {
+    let vp, comm, verzend;
+    if (p==='bol') {
+      verzend=g('bol-verzend'); const perc=g('bol-perc')/100, vast=g('bol-vast');
+      vp=(basis+verzend+vast)/(1-perc); comm=vp*perc+vast;
+    } else if (p==='etsy') {
+      verzend=g('etsy-verzend'); const perc=g('etsy-perc')/100;
+      vp=basis/(1-perc)+verzend; comm=(vp-verzend)*perc;
+    } else if (p==='amazon') {
+      verzend=g('amazon-verzend'); const perc=g('amazon-perc')/100, vast=g('amazon-vast');
+      vp=(basis+verzend+vast)/(1-perc); comm=vp*perc+vast;
+    } else if (p==='vinted') {
+      verzend=0; comm=0; vp=basis;
+    } else {
+      verzend=g('eigen-verzend'); const perc=g('eigen-perc')/100, vast=g('eigen-vast');
+      vp=(basis+verzend+vast)/(1-perc); comm=vp*perc+vast;
+    }
+    const winst=vp-comm-verzend-tot;
+    const pct=tot>0?(winst/tot*100):0;
+    res.push({p,vp,comm,verzend,winst,pct});
+  });
+
+  res.sort((a,b)=>b.winst-a.winst);
+  let html='';
+
+  res.forEach((r,i) => {
+    const isBest = i===0 && res.length>1;
+    const wk = r.winst>0?'pos':r.winst<0?'neg':'';
+    const wt = (r.winst>=0?'+':'')+fmt(r.winst)+' ('+r.pct.toFixed(0)+'%)';
+    let badge;
+    if (isBest)       badge='<div class="cbadge best">⭐ Meest winstgevend</div>';
+    else if(r.winst<0) badge='<div class="cbadge bad">⚠️ Verlieslatend</div>';
+    else if(r.pct<20)  badge='<div class="cbadge warn">⚡ Lage marge</div>';
+    else               badge='<div class="cbadge good">✓ Winstgevend</div>';
+
+    html+=`<div class="rblock">
+      <div class="rtop">
+        <div class="rname">${nm[r.p]}</div>
+        <div class="rright"><div class="rprice">${fmt(r.vp)}</div><div class="rprice-note">aanbevolen verkoopprijs</div></div>
+      </div>
+      <div class="rrows">
+        <div class="rrow"><span>Kostprijs</span><span>${fmt(tot)}</span></div>
+        ${r.verzend>0?`<div class="rrow"><span>Verzendkosten</span><span>${fmt(r.verzend)}</span></div>`:''}
+        ${r.comm>0?`<div class="rrow"><span>Platformkosten</span><span>− ${fmt(r.comm)}</span></div>`:''}
+        <div class="rrow total ${wk}"><span>Netto winst</span><span>${wt}</span></div>
+      </div>
+      ${badge}
+    </div>`;
+  });
+
+  const b = res[0];
+  let ac, at, atxt;
+  if (b.winst<0) {
+    ac='bad'; at='⚠️ Let op: verlieslatend';
+    atxt='Op alle geselecteerde platforms maak je momenteel verlies. Verhoog de winstmarge, verlaag je kosten of pas de verkoopprijs handmatig aan.';
+  } else if (b.pct<25) {
+    ac='warn'; at='⚡ Marge is aan de lage kant';
+    atxt='Je winstmarge is relatief laag. Overweeg een hogere marge in stap 2 of zoek naar kostenbesparingen.'+(res.length>1?' <strong>'+nm[b.p]+'</strong> levert momenteel de meeste winst op.':'');
+  } else {
+    ac='good'; at='✅ Gezonde winstmarge';
+    atxt='Je verkoopprijzen zien er goed uit.'+(res.length>1?' <strong>'+nm[b.p]+'</strong> is het meest winstgevend. Vergelijk ook de verkoopbaarheid per platform.':' Controleer of de prijs marktconform is door vergelijkbare producten te bekijken.');
+  }
+  html+=`<div class="advies ${ac}"><div class="advies-title">${at}</div>${atxt}</div>`;
+  document.getElementById('rb').innerHTML=html;
+}
+
+
+const CKEY='vldmn-calc-v1', PER_ITEM=['gram','printtijd','arbeidsuren','verpakking','overig'];
+let restoring=true;
+function saveCalc(){
+  if(restoring)return;
+  try{
+    const v={};
+    document.querySelectorAll('#calc input[type=number]').forEach(i=>{if(!PER_ITEM.includes(i.id))v[i.id]=i.value});
+    localStorage.setItem(CKEY,JSON.stringify({v,plat:[...act],marge:document.getElementById('marge').value}));
+  }catch(e){}
+}
+function refreshPicker(){
+  const sel=document.getElementById('fpick');
+  const L=(S.filament||[]).filter(i=>parseFloat(i.kg)>0);
+  sel.innerHTML=L.length?'<option value="">Kies filament…</option>'+L.map(i=>'<option value="'+i.id+'">'+esc(i.color)+' · '+esc(i.type)+'</option>').join(''):'<option value="">Geen prijs per kg ingevuld</option>';
+}
+document.getElementById('fpick').addEventListener('change',e=>{
+  const it=S.filament.find(x=>x.id===e.target.value);
+  if(it){document.getElementById('filamentprijs').value=it.kg;calc();}
+});
+function clearItem(){PER_ITEM.forEach(id=>document.getElementById(id).value='');calc();}
+try{
+  const st=JSON.parse(localStorage.getItem(CKEY)||'null');
+  if(st){
+    Object.entries(st.v||{}).forEach(([k,val])=>{const el=document.getElementById(k);if(el)el.value=val});
+    (st.plat||[]).forEach(p=>{if(document.getElementById('pt-'+p))tp(p)});
+    if(st.marge!==''&&st.marge!=null&&!isNaN(parseFloat(st.marge)))setM(parseFloat(st.marge));
+  }
+}catch(e){}
+restoring=false;
+document.querySelectorAll('#calc input').forEach(el=>el.addEventListener('input',calc));
+calc();
 </script>
 </body>
 </html>
