@@ -219,9 +219,10 @@ input[type=color].f{padding:3px;height:46px}
   <div id="list"></div>
   </div>
 <div id="fact" hidden>
-<div class="chips fs-seg"><button class="chip on" data-fs="edit">Gegevens</button><button class="chip" data-fs="prev">Voorbeeld</button></div>
+<div class="chips fs-seg"><button class="chip on" data-fs="edit">Gegevens</button><button class="chip" data-fs="prev">Voorbeeld</button><button class="chip" data-fs="hist">Historie</button></div>
 <div id="fs-edit">
-<div class="fsec">Jouw bedrijf</div><label>Bedrijfsnaam</label><input class="f" id="f-company" value="STUDIO VLDMN" oninput="fsave();frender()"><label>Adres</label><input class="f" id="f-addr1" value="Pronkridder 11" oninput="fsave();frender()"><div class="row"><div><label>Postcode</label><input class="f" id="f-zip" value="9404MC" oninput="fsave();frender()"></div><div><label>Plaats</label><input class="f" id="f-city" value="Assen" oninput="fsave();frender()"></div></div><label>Land</label><input class="f" id="f-country" value="Nederland" oninput="fsave();frender()"><div class="row"><div><label>KvK-nummer</label><input class="f" id="f-kvk" value="97177369" oninput="fsave();frender()"></div><div><label>BTW-nummer</label><input class="f" id="f-btw-own" value="" placeholder="NL…" oninput="fsave();frender()"></div></div><label>IBAN</label><input class="f" id="f-iban" value="" placeholder="NL00 BANK 0000 0000 00" oninput="fsave();frender()"><div class="fsec">Klant</div><label>Naam / bedrijf</label><input class="f" id="c-name" value="" placeholder="Klantnaam" oninput="frender()"><label>Adres</label><input class="f" id="c-addr" value="" oninput="frender()"><div class="row"><div><label>Postcode</label><input class="f" id="c-zip" value="" oninput="frender()"></div><div><label>Plaats</label><input class="f" id="c-city" value="" oninput="frender()"></div></div><label>Land</label><input class="f" id="c-country" value="Nederland" oninput="frender()"><div class="row"><div><label>KvK-nr</label><input class="f" id="c-kvk" value="" oninput="frender()"></div><div><label>BTW-nr</label><input class="f" id="c-btw" value="" oninput="frender()"></div></div><div class="fsec">Factuur</div><div class="row"><div><label>Factuurnummer</label><input class="f" id="f-num" value="" oninput="fsave();frender()"></div><div><label>Factuurdatum</label><input class="f" id="f-date" type="date" value="" oninput="frender()"></div></div><label>Order / referentie</label><input class="f" id="f-ref" value="" placeholder="bijv. Bol.com order-id" oninput="frender()"><label>Vervaldatum</label><input class="f" id="f-due" type="date" value="" oninput="frender()"><div class="swrow"><div class="sw" id="btw-toggle" onclick="toggleBTW()"></div><span onclick="toggleBTW()">BTW toepassen</span></div><div id="btw-perc-wrap" hidden><label>BTW-percentage (%)</label><input class="f" id="f-btw-pct" type="number" inputmode="decimal" value="21" min="0" max="100" oninput="frender()"></div><div class="fsec">Regels</div><div id="items-container"></div><button class="fadd" onclick="faddItem()">+ Regel toevoegen</button><div class="fsec">Notities</div><textarea class="f" id="f-notes" oninput="fsave();frender()" placeholder="Bijv. betaalinstructies of KOR-vermelding">Betaling verloopt via Bol.com
+<div class="fsec">Jouw bedrijf</div><label>Bedrijfsnaam</label><input class="f" id="f-company" value="STUDIO VLDMN" oninput="fsave();frender()"><label>Adres</label><input class="f" id="f-addr1" value="Pronkridder 11" oninput="fsave();frender()"><div class="row"><div><label>Postcode</label><input class="f" id="f-zip" value="9404MC" oninput="fsave();frender()"></div><div><label>Plaats</label><input class="f" id="f-city" value="Assen" oninput="fsave();frender()"></div></div><label>Land</label><input class="f" id="f-country" value="Nederland" oninput="fsave();frender()"><div class="row"><div><label>KvK-nummer</label><input class="f" id="f-kvk" value="97177369" oninput="fsave();frender()"></div><div><label>BTW-nummer</label><input class="f" id="f-btw-own" value="" placeholder="NL…" oninput="fsave();frender()"></div></div><label>IBAN</label><input class="f" id="f-iban" value="" placeholder="NL00 BANK 0000 0000 00" oninput="fsave();frender()"><div class="fsec">Klant</div><label>Naam / bedrijf</label><input class="f" id="c-name" value="" placeholder="Klantnaam" oninput="frender()"><label>Adres</label><input class="f" id="c-addr" value="" oninput="frender()"><div class="row"><div><label>Postcode</label><input class="f" id="c-zip" value="" oninput="frender()"></div><div><label>Plaats</label><input class="f" id="c-city" value="" oninput="frender()"></div></div><label>Land</label><input class="f" id="c-country" value="Nederland" oninput="frender()"><div class="row"><div><label>KvK-nr</label><input class="f" id="c-kvk" value="" oninput="frender()"></div><div><label>BTW-nr</label><input class="f" id="c-btw" value="" oninput="frender()"></div></div><div class="fsec">Factuur</div><div class="row"><div><label>Factuurnummer</label><input class="f" id="f-num" value="" oninput="fsave();frender()"></div><div><label>Factuurdatum</label><input class="f" id="f-date" type="date" value="" oninput="frender()"></div></div><label>Order / referentie</label><input class="f" id="f-ref" value="" placeholder="bijv. Bol.com order-id" oninput="frender()"><label>Vervaldatum</label><input class="f" id="f-due" type="date" value="" oninput="frender()"><div class="swrow"><div class="sw" id="btw-toggle" onclick="toggleBTW()"></div><span onclick="toggleBTW()">BTW toepassen</span></div><div id="btw-perc-wrap" hidden><label>BTW-percentage (%)</label><input class="f" id="f-btw-pct" type="number" inputmode="decimal" value="21" min="0" max="100" oninput="frender()"></div><div class="fsec">Regels</div><div id="items-container"></div><button class="fadd" onclick="faddItem()">+ Regel toevoegen</button><div class="swrow"><div class="sw on" id="ded-toggle" onclick="toggleDed()"></div><span onclick="toggleDed()">Voorraad afboeken bij export<br><small style="color:var(--muted)">alleen regels die je uit producten koos</small></span></div>
+<div class="fsec">Notities</div><textarea class="f" id="f-notes" oninput="fsave();frender()" placeholder="Bijv. betaalinstructies of KOR-vermelding">Betaling verloopt via Bol.com
 Factuur vrijgesteld van btw op grond van de kleineondernemersregeling (KOR)</textarea><button class="btn fgo" data-fs="prev">Voorbeeld &amp; PDF →</button>
 </div>
 <div id="fs-prev" hidden>
@@ -245,6 +246,7 @@ Factuur vrijgesteld van btw op grond van de kleineondernemersregeling (KOR)</tex
   <div class="doc-footer"><div id="d-footer-left"></div><div id="d-footer-right"></div></div>
  </div></div>
 </div>
+<div id="fs-hist" hidden><button class="btn sec" style="width:100%;margin-bottom:12px" onclick="fnew()">+ Nieuwe factuur</button><div id="fh-list"></div></div>
 </div>
   <div id="calc" hidden><div class="cmain">
 
@@ -717,15 +719,20 @@ calc();
 
 const FKEY='vldmn-factuur-v1', FNUM='vldmn-lastnum';
 const FFIELDS=['f-company','f-addr1','f-zip','f-city','f-country','f-kvk','f-btw-own','f-iban','f-num','f-notes'];
-let fBTW=false, fitems=[{desc:'',qty:1,price:0}];
+let fDed=true, fBTW=false, fitems=[{desc:'',qty:1,price:0}];
 const fg=id=>document.getElementById(id)?.value||'';
 const fsv=(id,v)=>{const el=document.getElementById(id);if(el&&v!=null)el.value=v};
 const ffmt=n=>'€\u00A0'+n.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');
 const fdate=v=>{if(!v)return'—';const[y,m,d]=v.split('-');return d+'-'+m+'-'+y};
 const fshow=(id,on)=>{document.getElementById(id).style.display=on?'':'none'};
 
-function fsave(){try{const o={};FFIELDS.forEach(k=>o[k]=fg(k));localStorage.setItem(FKEY,JSON.stringify(o));}catch(e){}}
-function floadSaved(){try{const o=JSON.parse(localStorage.getItem(FKEY)||'null');if(o)FFIELDS.forEach(k=>fsv(k,o[k]));}catch(e){}}
+function fsave(){try{const o={};FFIELDS.forEach(k=>o[k]=fg(k));o.ded=fDed;localStorage.setItem(FKEY,JSON.stringify(o));}catch(e){}}
+function floadSaved(){try{
+  const o=JSON.parse(localStorage.getItem(FKEY)||'null');
+  if(o){FFIELDS.forEach(k=>fsv(k,o[k]));if(o.ded===false)fDed=false;}
+  const pn=localStorage.getItem(FNUM);if(pn)fsv('f-num',pn);
+}catch(e){}
+document.getElementById('ded-toggle').classList.toggle('on',fDed);}
 function fincr(n){
   const m=n.match(/^(\d{4})-(\d+)$/);
   if(m)return new Date().getFullYear()+'-'+String(parseInt(m[2])+1).padStart(4,'0');
@@ -742,7 +749,7 @@ function faddItem(){fitems.push({desc:'',qty:1,price:0});frenderItems();frender(
 function fremoveItem(i){fitems.splice(i,1);if(!fitems.length)fitems.push({desc:'',qty:1,price:0});frenderItems();frender();}
 function fpick(i,id){
   const p=S.products.find(x=>x.id===id);if(!p)return;
-  fitems[i].desc=p.name;if(parseFloat(p.price)>0)fitems[i].price=parseFloat(p.price);
+  fitems[i].desc=p.name;fitems[i].pid=p.id;if(parseFloat(p.price)>0)fitems[i].price=parseFloat(p.price);
   frenderItems();frender();
 }
 function frenderItems(){
@@ -792,6 +799,61 @@ function fscale(){
   wrap.style.width=(794*sc)+'px';wrap.style.height=(doc.offsetHeight*sc)+'px';
 }
 function ftoast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
+const FHKEY='vldmn-facturen-v1', CF=['c-name','c-addr','c-zip','c-city','c-country','c-kvk','c-btw'];
+let fhist=[];try{fhist=JSON.parse(localStorage.getItem(FHKEY)||'[]')}catch(e){}
+const fhsave=()=>{try{localStorage.setItem(FHKEY,JSON.stringify(fhist))}catch(e){}};
+const fclone=o=>JSON.parse(JSON.stringify(o));
+function toggleDed(){fDed=!fDed;document.getElementById('ded-toggle').classList.toggle('on',fDed);fsave();}
+function fgo(k){
+  ['edit','prev','hist'].forEach(x=>document.getElementById('fs-'+x).hidden=x!==k);
+  document.querySelectorAll('.fs-seg .chip').forEach(c=>c.classList.toggle('on',c.dataset.fs===k));
+  window.scrollTo(0,0);
+  if(k==='prev')frender();
+  if(k==='hist')frenderHist();
+}
+function fcalcTotal(){
+  let sub=0;fitems.forEach(i=>sub+=(i.qty||0)*(i.price||0));
+  const pct=parseFloat(fg('f-btw-pct'))||21;return sub+(fBTW?sub*pct/100:0);
+}
+function fsnapshot(){
+  const cust={};CF.forEach(k=>cust[k]=fg(k));
+  return {num:fg('f-num'),date:fg('f-date'),ref:fg('f-ref'),due:fg('f-due'),btw:fBTW,pct:fg('f-btw-pct'),notes:fg('f-notes'),cust,items:fclone(fitems),total:fcalcTotal(),ts:Date.now()};
+}
+function fdeductStock(list){
+  let n=0;
+  list.forEach(it=>{
+    if(!it.pid)return;
+    const p=S.products.find(x=>x.id===it.pid);if(!p)return;
+    p.stock=Math.max(0,(+p.stock||0)-(it.qty||0));n++;
+  });
+  if(n)save();return n;
+}
+function frenderHist(){
+  const el=document.getElementById('fh-list');
+  el.innerHTML=fhist.length?fhist.slice().reverse().map(h=>
+   '<div class="item"><div class="info" style="cursor:pointer" data-load="'+esc(h.num)+'"><div class="t">'+esc(h.num)+' · '+esc(h.cust['c-name']||'—')+'</div><div class="s">'+fdate(h.date)+(h.ref?' · '+esc(h.ref):'')+'</div></div>'+
+   '<b style="color:var(--walnut)">'+ffmt(h.total)+'</b><button class="edit" data-delnum="'+esc(h.num)+'" aria-label="Verwijder">×</button></div>').join('')
+   :'<div class="empty">Nog geen facturen.<br>Na een PDF-export verschijnt de factuur hier.</div>';
+}
+function fload(num){
+  const h=fhist.find(x=>x.num===num);if(!h)return;
+  fsv('f-num',h.num);fsv('f-date',h.date);fsv('f-ref',h.ref);fsv('f-due',h.due);fsv('f-btw-pct',h.pct||21);fsv('f-notes',h.notes);
+  CF.forEach(k=>fsv(k,h.cust[k]));
+  fitems=fclone(h.items);fBTW=!!h.btw;
+  document.getElementById('btw-toggle').classList.toggle('on',fBTW);document.getElementById('btw-perc-wrap').hidden=!fBTW;
+  frenderItems();frender();fgo('prev');ftoast('Factuur '+num+' geladen');
+}
+function fnew(){
+  CF.forEach(k=>fsv(k,k==='c-country'?'Nederland':''));
+  fsv('f-ref','');fsv('f-due','');fsv('f-date',new Date().toISOString().slice(0,10));
+  let pn;try{pn=localStorage.getItem(FNUM)}catch(e){}
+  if(pn)fsv('f-num',pn);
+  fitems=[{desc:'',qty:1,price:0}];frenderItems();frender();fgo('edit');
+}
+function fdel(num){
+  if(!confirm('Factuur '+num+' uit de historie verwijderen?\n(De voorraad wordt niet teruggezet.)'))return;
+  fhist=fhist.filter(h=>h.num!==num);fhsave();frenderHist();
+}
 function exportPDF(){
   if(typeof html2pdf==='undefined'){ftoast('PDF-export heeft internet nodig');return;}
   const el=document.getElementById('invoice-doc'),num=fg('f-num')||'factuur';
@@ -799,23 +861,30 @@ function exportPDF(){
   html2pdf().set({margin:0,filename:'Factuur_'+num+'.pdf',image:{type:'jpeg',quality:.98},html2canvas:{scale:2,useCORS:true},jsPDF:{unit:'px',format:[794,1123],orientation:'portrait'}})
    .from(el).save().then(()=>{
      fscale();
-     const nx=fincr(fg('f-num'));fsv('f-num',nx);try{localStorage.setItem(FNUM,nx)}catch(e){}
-     fsave();frender();ftoast('✓ PDF opgeslagen · volgend nr: '+nx);
+     const known=fhist.some(h=>h.num===num);
+     let ded=0;if(fDed&&!known)ded=fdeductStock(fitems);
+     const snap=fsnapshot(),ix=fhist.findIndex(h=>h.num===num);
+     if(ix>=0)fhist[ix]=snap;else fhist.push(snap);fhsave();
+     let pn;try{pn=localStorage.getItem(FNUM)}catch(e){}
+     let msg;
+     if(!pn||num===pn){const nx=fincr(num);fsv('f-num',nx);try{localStorage.setItem(FNUM,nx)}catch(e){}msg='volgend nr: '+nx;}
+     else{fsv('f-num',pn);msg='nummer terug naar '+pn;}
+     fsave();frender();
+     ftoast('✓ PDF opgeslagen'+(ded?' · voorraad bijgewerkt':'')+' · '+msg);
    }).catch(()=>{fscale();ftoast('PDF maken mislukt');});
 }
 document.addEventListener('click',e=>{
-  const b=e.target.closest('[data-fs]');if(!b)return;
-  const prev=b.dataset.fs==='prev';
-  document.getElementById('fs-edit').hidden=prev;document.getElementById('fs-prev').hidden=!prev;
-  document.querySelectorAll('.fs-seg .chip').forEach(c=>c.classList.toggle('on',c.dataset.fs===b.dataset.fs));
-  window.scrollTo(0,0);if(prev){frender();}
+  const b=e.target.closest('[data-fs]');if(b){fgo(b.dataset.fs);return;}
+  const l=e.target.closest('[data-load]');if(l){fload(l.dataset.load);return;}
+  const d=e.target.closest('[data-delnum]');if(d)fdel(d.dataset.delnum);
 });
+document.getElementById('f-num').addEventListener('input',()=>{try{localStorage.setItem(FNUM,fg('f-num'))}catch(e){}});
 window.addEventListener('resize',fscale);
 floadSaved();
 fsv('f-date',new Date().toISOString().slice(0,10));
 finitNum();
 document.getElementById('d-logo').src=document.querySelector('.logo').src;
-frenderItems();frender();
+frenderItems();frender();frenderHist();
 </script>
 </body>
 </html>
