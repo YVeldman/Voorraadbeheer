@@ -421,7 +421,24 @@ Factuur vrijgesteld van btw op grond van de kleineondernemersregeling (KOR)</tex
 <input type="file" id="imp" accept="application/json" hidden>
 
 <script>
-const TYPES=['PLA','PLA+','PETG','ABS','ASA','TPU','Silk','Matte','Anders'];
+const TYPES=['PLA Basic','PLA Matte','PLA Silk+','PLA-CF','PETG HF','PLA','PLA+','PETG','ABS','ASA','TPU','Silk','Matte','Anders'];
+const BAMBU={
+'PLA Basic':[['Jade White','#ffffff'],['Beige','#f7e6de'],['Light Gray','#d1d3d5'],['Silver','#a6a9aa'],['Gray','#8e9089'],['Magenta','#ec008c'],['Pink','#f55a74'],['Hot Pink','#f5547c'],['Orange','#ff6a13'],['Pumpkin Orange','#ff9016'],['Gold','#e4bd68'],['Sunflower Yellow','#fec600'],['Yellow','#f4ee2a'],['Bright Green','#becf00'],['Bambu Green','#00ae42'],['Mistletoe Green','#3f8e43'],['Bronze','#847d48'],['Cocoa Brown','#6f5034'],['Brown','#9d432c'],['Maroon Red','#9d2235'],['Red','#c12e1f'],['Turquoise','#00b1b7'],['Cyan','#0086d6'],['Blue','#0a2989'],['Cobalt Blue','#0056b8'],['Purple','#5e43b7'],['Indigo Purple','#482960'],['Blue Grey','#5b6579'],['Dark Gray','#545454'],['Black','#000000']],
+'PLA Matte':[['Ivory White','#ffffff'],['Bone White','#cbc6b8'],['Desert Tan','#e8dbb7'],['Latte Brown','#d3b7a7'],['Caramel','#ae835b'],['Terracotta','#b15533'],['Dark Brown','#7d6556'],['Dark Chocolate','#4d3324'],['Lilac Purple','#ae96d4'],['Sakura Pink','#e8afcf'],['Mandarin Orange','#f99963'],['Lemon Yellow','#f7d959'],['Plum','#950051'],['Scarlet Red','#de4343'],['Dark Red','#bb3d43'],['Dark Green','#68724d'],['Grass Green','#61c680'],['Apple Green','#c2e189'],['Ice Blue','#a3d8e1'],['Sky Blue','#56b7e6'],['Marine Blue','#0078bf'],['Dark Blue','#042f56'],['Ash Gray','#9b9ea0'],['Nardo Gray','#757575'],['Charcoal','#000000']],
+'PLA Silk+':[['Gold','#f4a925'],['Silver','#c8c8c8'],['Titan Gray','#5f6367'],['Rose Gold','#ba9594']],
+'PLA-CF':[['Burgundy Red','#951e23'],['Iris Purple','#69398e'],['Matcha Green','#5c9748'],['Jeans Blue','#6e88bc'],['Royal Blue','#2842ad'],['Lava Gray','#4d5054'],['Black','#000000']],
+'PETG HF':[['White','#ffffff'],['Cream','#f9dfb9'],['Yellow','#ffd00b'],['Orange','#f75403'],['Red','#eb3a3a'],['Lime Green','#6ee53c'],['Green','#00ae42'],['Forest Green','#39541a'],['Lake Blue','#1f79e5'],['Blue','#002e96'],['Peanut Brown','#875718'],['Gray','#adb1b2'],['Dark Gray','#515151'],['Black','#000000']],
+};
+function bambuSel(){
+  return '<label>Bambu Lab-kleur (vult alles in)</label><select class="f" id="f_bambu" onchange="pickBambu(this.value)"><option value="">Kies uit Bambu-kleuren…</option>'+
+   Object.keys(BAMBU).map(l=>'<optgroup label="'+l+'">'+BAMBU[l].map((c,i)=>'<option value="'+l+'|'+i+'">'+c[0]+'</option>').join('')+'</optgroup>').join('')+'</select>';
+}
+function pickBambu(v){
+  if(!v)return;
+  const [l,i]=v.split('|'),c=BAMBU[l][+i];
+  $('#f_color').value=c[0];$('#f_brand').value='Bambu Lab';$('#f_type').value=l;$('#f_hex').value=c[1];
+}
+
 const CATS=['Decoratie','Accessoires','Cadeaus'];
 const KEY='vldmn-voorraad-v1';
 let S={filament:[],products:[]}, tab='filament', filter='Alles', query='';
@@ -485,7 +502,7 @@ function openSheet(id){
   let h='';
   if(tab==='filament'){
     const d=it||{brand:'',type:'PLA',color:'',hex:'#B5714A',spools:1,open:0,min:1,kg:''};
-    h=`<h2>${it?'Filament bewerken':'Nieuw filament'}</h2>
+    h=`<h2>${it?'Filament bewerken':'Nieuw filament'}</h2>${it?'':bambuSel()}
     <label>Kleurnaam</label><input class="f" id="f_color" value="${esc(d.color)}" placeholder="bijv. Sand Beige">
     <div class="row"><div><label>Merk</label><input class="f" id="f_brand" value="${esc(d.brand)}" placeholder="bijv. Bambu Lab"></div>
     <div><label>Type</label><select class="f" id="f_type">${opts(TYPES,d.type)}</select></div></div>
